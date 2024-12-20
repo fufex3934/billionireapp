@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(),
+      theme: ThemeData.dark(useMaterial3: true),
       home: Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -28,8 +28,28 @@ class MyApp extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Balance Part'),
-              ElevatedButton(onPressed: aFunction, child: Text('Click Here'))
+              Expanded(
+                flex: 9,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Bank Balance: '),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text('0'),
+                  ],
+                ),
+              ),
+              Expanded(
+                  flex: 1,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red[900],
+                        minimumSize: Size(double.infinity, 0),
+                      ),
+                      onPressed: aFunction,
+                      child: Text('Click Here')))
             ],
           ),
         ),
